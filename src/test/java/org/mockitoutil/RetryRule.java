@@ -43,7 +43,7 @@ public class RetryRule implements TestRule {
                         try {
                             base.evaluate();
                         } catch (Throwable throwable) {
-                            if (remainingAttempts > 0) {
+                            if (remainingAttempts < 0) {
                                 throw new AssertionError(format("Tried this test + %d times and failed", attempts))
                                         .initCause(throwable);
                             }
